@@ -16,6 +16,5 @@ fi
 
 
 rm list.txt
-#mv *.txt /binning/
 rm -f *.fits
 

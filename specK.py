@@ -10,6 +10,8 @@ for nazwa in A:
     file="spectro_obspm_fullprofile_Cak_3D_"+nazwa[18:]
     dat=fits.open(file[:-1])
     da=dat[0].data
+    pixel=dat[0].header['CRPIX3']
+    wave=dat[0].header['CRVAL3']
     dat.close()
     print(len(da[:,1,3]))
     bright_spots=np.loadtxt("spectro_obspm_Cak_"+nazwa[18:-5]+"txt")
@@ -44,8 +46,15 @@ for nazwa in A:
             spec=np.zeros(94)
             for i in range(0,len(reg)):
                 spec=spec+da[:,int(bright_spots[reg[i]][0]),int(bright_spots[reg[i]][1])]
-            plt.plot(np.linspace(0,94,94),spec/len(reg))
+            X=np.linspace(0,94,94)
+            X=0.0930*X+float(wave)-0.0930*float(pixel)           #0.0930*spec+3929.507 #covnerting data from spectral pixels to angstroms
+            spec=spec/len(reg) #computing mean value
+            plt.plot(X,spec)
             plt.savefig("plot"+str(u)+str(c)+".png")
             plt.close()
+            wyn=open("spec"+str(u)+str(c)+".txt","w")
+            for l in range(0,94):
+                wyn.write(str(X[i])+" "+str(spec[i])+"\n")
+            wyn.close()
             u=u+1
     c=c+1
