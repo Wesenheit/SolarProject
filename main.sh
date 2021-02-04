@@ -7,8 +7,8 @@ gunzip *.gz
 ls *.fits > list.txt
 if [ -s list.txt ];
 then
-	python3 entry.py list.txt $konk
-	echo $konk "data found, processing" >> log.dat
+	echo $konk "initial data found, processing" >> log.dat
+	bash caK.sh
 else
 	echo $konk "no file found" >> log.dat
 fi
