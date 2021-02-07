@@ -2,6 +2,7 @@ data=$(date +%y%m)
 day=$(date +%d)
 konk=$(date +%Y%m%d)
 echo $data
+cd /home/mkap/Files/Astro/Solarproject
 wget ftp://ftpbass2000.obspm.fr/pub/meudon/spc/K/$data/spectro_obspm_Cak_$konk*.fits.gz
 gunzip *.gz
 ls *.fits > list.txt
