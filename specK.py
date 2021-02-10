@@ -53,7 +53,7 @@ for nazwa in A:
             plt.savefig("plot"+str(u)+str(c)+".png")
             plt.close()
             wyn=open("spec"+str(u)+str(c)+".txt","w")
-            for l in range(0,94):
+            for i in range(0,94):
                 wyn.write(str(X[i])+" "+str(spec[i])+"\n")
             wyn.close()
             u=u+1
