@@ -18,6 +18,7 @@ then
 	mv spec*txt binning/$konk
 else
 	echo "no active region found" >> log.dat
+	mkdir binning/$konk
 	mv spec*txt binning/$konk
 fi
 

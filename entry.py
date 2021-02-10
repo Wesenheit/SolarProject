@@ -9,7 +9,7 @@ f.close()
 u=0
 
 def bright(i,j,da,me):
-    if (da[i][j]<me*4.3):
+    if (da[i][j]<me*4):
         return False
     else:
         tab=[]
